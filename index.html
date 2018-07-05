@@ -16,30 +16,110 @@
     <script src="https://www.gstatic.com/firebasejs/5.1.0/firebase.js"></script>
     
     <script src="assets/javascript/app.js" ></script>
+    <link rel="stylesheet" href="assets/css/style.css">
 
 </head>
 <body>
-    <script type="in/Login"></script>
-    <script type="text/javascript" src="https://platform.linkedin.com/in.js">
-        api_key: 78ayqtzpnag282
-        authorize: true
-        // onLoad: onLinkedInLoad
-    </script>
-    <button type="button" id="logout">Logout</button>
+    <div class ="panel panel-body" id="login-panel">
+        <div id="login-button"><script type="in/Login" ></script></div>
+    </div>
+    
+
+
+   
+
+
+
+<div id="page-2">
+    <nav class="navbar">
+        <div id="nav-elements">
+            <button class="btn btn-primary navButtons">Logged in as: <span id="loggedin-user" </button>
+            <button class="btn btn-primary navButtons" id="logout">Logout</button>
+        </div>
+    </nav>
+
+    <div class="col-lg-9 col-md-9 panel panel-body" id="userInfoPanel">
+        <div id="user-info">
+            <p><b>Name: </b><span id="name"</p>
+            <p><b>Email-Address:</b><span id="email"></span></p>
+            <p><b>Industry:</b><span id="industry"></span></p>
+            <p><b>Title:</b><span id="title"></span></p>
+            <p><b>Location:</b><span id="location"></span></p>
+            <p><b>Summary: </b><span id="summary"></span></p>
+        </div>
+    </div>
+    <div class="col-lg-2 col-md-2 panel panel-body" id="userImagePanel">
+        <div id="user-image-div">
+            <img src="" id="user-image"> 
+        </div>
+    </div>
+
+    <!-- <div class="col-lg-12 panel panel-body" id="matchedJobDisplayanel"> -->
+        <table class="table table-bordered" id="table">
+            <thead>
+                <tr>
+                    <td style="width: 12.66%" >Date Posted</td>
+                    <td style="width: 15.66%" >Location</td>
+                    <td style="width: 24.66%">Title</td>
+                    <td style="width: 30.66%">Description</td>
+                    <td style="width: 10.66%">Type</td>
+                    <td style="width: 10.66%">link</td>
+                </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+        </table>
+           
+    <!-- </div> -->
+
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 
 	<div class="container">
 	    <div class="jumbotron jumbotron-fluid">
             <div class="container">
                 <h1 class="display-4">LinkedIndeed</h1>
-                <div class="form-group col-lg-6"">
+                <div class="form-group col-lg-6">
                 <label for="formGroupExampleInput">Example label</label>
                 <input type="text" class="form-control" id="formGroupExampleInput" placeholder="">
                 </div>
-                <div class="form-group col-lg-6"">
+                <div class="form-group col-lg-6">
                 <label for="formGroupExampleInput">Example label</label>
                 <input type="text" class="form-control" id="formGroupExampleInput" placeholder="">
                 </div>
-                <div class="form-group col-lg-6"">
+                <div class="form-group col-lg-6">
                 <label for="formGroupExampleInput">Example label</label>
                 <input type="text" class="form-control" id="formGroupExampleInput" placeholder="">
                 </div>
@@ -47,7 +127,6 @@
             </div>
         </div>
     </div>
-
     <table class="table">
         <caption></caption>
     <thead>
@@ -65,8 +144,20 @@
         </tr>
     </tbody>
     </table>
-
+</div>
 <!-- </script> -->
 
+
+<script type="text/javascript" src="https://platform.linkedin.com/in.js">
+    api_key: 78ayqtzpnag282
+    authorize: true
+    // onLoad: onLinkedInLoad
+</script>
 </body>
 </html>
+
+
+
+
+
+

@@ -1,0 +1,69 @@
+
+
+#login-panel{
+    margin: 15px;
+    height: 600px;
+    border: 1px solid black;
+}
+
+#login-button{
+    margin-top: 280px;
+    margin-left: 550px;
+}
+
+.navbar{
+    margin-top: 10px;
+    height: 60px;
+    background-color: lightsteelblue;
+    text-align: right;
+}
+
+.navButtons{
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+#nav-elements{
+    margin-right: 25px;
+}
+
+#userInfoPanel{
+    height: 200px;
+    border: 1px solid black;
+    margin-top: 0px;
+    margin-left: 25px;
+    overflow: auto;
+    /* line-height: 15px; */
+}
+
+
+#userImagePanel{
+    height: 200px;
+    border: 1px solid black;
+    margin-left : 50px;
+    padding: 1px;
+    /* text-align: right; */
+    /* margin-top: -20px; */
+    overflow: auto;
+
+}
+
+#matchedJobDisplayPanel{
+    border: 1px solid black;
+    margin-right: 2500px;
+    margin-left: 20px;
+    height: 600px;
+    max-width: 96%;
+    /* background-color : red; */
+}
+
+#table{
+    margin: 25px;
+    max-width: 96%;
+    text-align: center;
+
+}
+p{
+    height: 10px;
+}
+
