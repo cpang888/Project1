@@ -100,6 +100,10 @@ function displayInTable(datePosted,location, title, type, description ){
   $("#tableBody").append(tablebody);
  }
 
+function addPreferedLocations(){
+  alert("when this icon is clcked, add it to an array or firebase")
+}
+
   $(document).ready(function() {
     // when document is ready, call the start method
     start();
