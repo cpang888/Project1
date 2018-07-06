@@ -1,15 +1,16 @@
 
-/* login panel - check if still exists */
-#login-panel{
+
+/*#login-panel{
     margin: 15px;
     height: 600px;
     border: 1px solid black;
-}
+}*/
 
 /* linkedIn login Button */
 #login-button{
-    margin-top: 280px;
-    margin-left: 550px;
+    margin-top: ;
+    margin-left: ;
+    padding: ;
 }
 
 /* navigation bar */
@@ -17,7 +18,7 @@
     margin-top: 10px;
     height: 60px;
     background-color: lightsteelblue;
-    text-align: right;
+    text-align: center;
 }
 
 /* navbar buttons */
@@ -99,4 +100,31 @@
 p{
     height: 10px;
 }
+.CellComment{
+    display: none;
+    position: absolute;
+    overflow: auto;
+    background: #C8C8C8;
+    border: 1px solid #000;
+    border-radius: 4px;
+    margin-left: 28px;
+    padding: 10px;
+    position: absolute;
+    z-index: 1000;
+    width:400px;
+    height:500px;
+    
+    /* essential */
+     text-overflow: ellipsis;
+     /*width: 200px;*/
+     white-space: nowrap;
+     /*overflow: hidden;*/
+     
+     /* for good looks */
+     padding: 10px;
+  }
+  
+  .CellWithComment:hover span.CellComment{
+    display:block;
+  }
 
