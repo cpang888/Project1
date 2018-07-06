@@ -89,15 +89,16 @@ function pullJobs(){
 }
 
 function displayInTable(datePosted,location, title, type, description ){
-    var tablebody = $('<tr><td>'
-                     + datePosted +'</td><td>'
-                     + location + '</td><td>'
-                     + title + '</td><td>'
-                     + "description" + '</td><td>'
-                     + type + '</td><td>'
-                     + "link" + '</td><tr>');
-    $("#tableBody").append(tablebody);
-}
+  var tablebody = $('<tr><td>'
+                   + datePosted +'</td><td>'
+                   + location + "</td><td class='CellWithComment'>"
+                   + title
+                   + "<span class='CellComment'>" + description + '</span></td><td>'
+                   + 'description </td><td>'
+                   + type + '</td><td>'
+                   + "link" + '</td><tr>');
+  $("#tableBody").append(tablebody);
+ }
 
   $(document).ready(function() {
     // when document is ready, call the start method
