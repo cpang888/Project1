@@ -25,11 +25,6 @@
     </div>
     
 
-
-   
-
-
-
 <div id="page-2">
     <nav class="navbar">
         <div id="nav-elements">
@@ -52,6 +47,35 @@
         <div id="user-image-div">
             <img src="" id="user-image"> 
         </div>
+    </div>
+
+    <div id="userInputDiv" class="col-lg-9">
+        <form class="form-inline">
+            <div class="form-group has-feedback">
+                <input type="text" class="form-control" placeholder="location" id="preferedLocations"  />
+                <button class="btn btn-success"><span class="glyphicon glyphicon-plus" onclick="addPreferedLocations();"></span></button>
+            </div>
+
+            <div class="form-group" id="secondInputDiv">
+                <input type="text" class="form-control" placeholder="Additional Skills" id="inputSkills"/>
+                <button class="btn btn-success"><span class="glyphicon glyphicon-plus" onclick="addPreferedLocations();"></span></button>
+            </div>
+
+        
+
+            <div class="form-group" id= "thirdInputDiv">
+                <select class="form-control">
+                        <option id="defaultSelection">Select One</option>
+                        <option id="bothJobs">Both</option>
+                        <option id="governmentJobs">Government Jobs</option>
+                        <option id="privateSectorJobs" >Private Sector Jobs</option>
+                    </select>
+                <button class="btn btn-success" id="submitUserInput">Submit</button>
+            </div>
+
+
+        </form>
+        
     </div>
 
     <!-- <div class="col-lg-12 panel panel-body" id="matchedJobDisplayanel"> -->
@@ -149,7 +173,7 @@
 
 
 <script type="text/javascript" src="https://platform.linkedin.com/in.js">
-    api_key: 78ayqtzpnag282
+    api_key: 77uwyu64kulxbc
     authorize: true
     // onLoad: onLinkedInLoad
 </script>

@@ -1,16 +1,18 @@
 
-
+/* login panel - check if still exists */
 #login-panel{
     margin: 15px;
     height: 600px;
     border: 1px solid black;
 }
 
+/* linkedIn login Button */
 #login-button{
     margin-top: 280px;
     margin-left: 550px;
 }
 
+/* navigation bar */
 .navbar{
     margin-top: 10px;
     height: 60px;
@@ -18,17 +20,20 @@
     text-align: right;
 }
 
+/* navbar buttons */
 .navButtons{
     margin-right: 10px;
     margin-top: 10px;
 }
 
+/* elements inside the navbar */
 #nav-elements{
     margin-right: 25px;
 }
 
+/* user information panel */
 #userInfoPanel{
-    height: 200px;
+    height: 150px;
     border: 1px solid black;
     margin-top: 0px;
     margin-left: 25px;
@@ -36,7 +41,12 @@
     /* line-height: 15px; */
 }
 
+/* user information */
+#user-info{
+    margin-top : -15px;
+}
 
+/* user image panel  */
 #userImagePanel{
     height: 200px;
     border: 1px solid black;
@@ -47,7 +57,23 @@
     overflow: auto;
 
 }
+/* div holding all the user input fields */
+#userInputDiv{
+    height: 49px;
+    margin-top: -60px;
+    margin-left: 8px;
+}
 
+/* increasing spacing between the input boxes */
+#secondInputDiv{
+    margin-left: 105px;
+}
+
+#thirdInputDiv{
+    margin-left: 104px;
+}
+
+/* Panel for displaying table */
 #matchedJobDisplayPanel{
     border: 1px solid black;
     margin-right: 2500px;
@@ -57,11 +83,18 @@
     /* background-color : red; */
 }
 
+/* for job displaying table */
 #table{
     margin: 25px;
     max-width: 96%;
     text-align: center;
+    border: 2px solid black !important;
 
+}
+
+/* Put border in every td */
+#table td{
+    border: 1px solid black;
 }
 p{
     height: 10px;
