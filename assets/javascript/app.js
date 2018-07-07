@@ -107,32 +107,34 @@ function start() {
         dispayUserInfo( name, imageUrl,emailAddress, industry, summary);
         pullJobs();
   
+        database.ref(name + '/locations').limitToLast(10).on("child_added", function(snapshot) {
+          if(snapshot != null) {
+            var key = snapshot.key;
+            console.log("key: " + snapshot.key);
+            console.log(snapshot.val());
+            locationArr.push(snapshot.val());
+            console.log("locationArr: ");
+            console.log(locationArr);
+          }
+        });
+      
+        database.ref(name + '/skills').limitToLast(10).on("child_added", function(snapshot) {
+          console.log(snapshot.val());
+          if(snapshot != null) {
+            var key = snapshot.key;
+            console.log("key: " + snapshot.key);
+            skillsArr.push(snapshot.val());
+            console.log("skillsArr: ");
+            console.log(skillsArr);
+          }
+        });
+        
       }).error(function (data) {
         console.log(data);
       });
     }
 
-  database.ref('cindy pang/locations').limitToLast(10).on("child_added", function(snapshot) {
-    if(snapshot != null) {
-      var key = snapshot.key;
-      console.log("key: " + snapshot.key);
-      console.log(snapshot.val());
-      locationArr.push(snapshot.val());
-      console.log("locationArr: ");
-      console.log(locationArr);
-    }
-  });
 
-  database.ref('cindy pang/skills').limitToLast(10).on("child_added", function(snapshot) {
-    console.log(snapshot.val());
-    if(snapshot != null) {
-      var key = snapshot.key;
-      console.log("key: " + snapshot.key);
-      skillsArr.push(snapshot.val());
-      console.log("skillsArr: ");
-      console.log(skillsArr);
-    }
-  });
 
   // build the query on the fly based on user input
   function buildQuery() {
