@@ -1,4 +1,3 @@
-
 var config = {
   apiKey: "AIzaSyA9m27aMxgZT72WS_2w3r7GR5hU0p_ZMTQ",
   authDomain: "project1-2fe91.firebaseapp.com",
@@ -268,3 +267,4 @@ function start() {
   })
 
   
+
