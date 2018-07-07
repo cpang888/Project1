@@ -1,0 +1,17 @@
+
+  1. Who is your target audience?
+- People who already have a LinkedIn account
+- People who are job searching, making career change
+
+  2. What is the problem that the product will address?
+- Make user easier to search jobs
+
+  3. What is the primary goal of the product?
+- Help people to find job 
+- Help people to easier identify opportunity that fits there skill set
+
+  4. Identify and prioritize essential user stories (limit this to 3 or fewer)?
+- As a user, I want to able to login with my LinkedIn information so that I could utilitize the LinkedIn information.
+- As a user, I would like my LinkedIn information on the LinkedIndeed web site.
+- As a user, I would like to have job search result display automatically.
+- As a user, I would like to an option on the web site so that I could job search on different city.
