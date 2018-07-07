@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html>
 <head>
 	<title>LinkedIndeed</title>
@@ -13,7 +13,7 @@
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-    <script src="https://www.gstatic.com/firebasejs/5.1.0/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
     
     <script src="assets/javascript/app.js" ></script>
     <link rel="stylesheet" href="assets/css/style.css">
@@ -56,26 +56,23 @@
         <form class="form-inline">
             <div class="form-group has-feedback">
                 <input type="text" class="form-control" placeholder="location" id="preferedLocations"  />
-                <button class="btn btn-success"><span class="glyphicon glyphicon-plus" onclick="addPreferedLocations();"></span></button>
+                <button class="btn btn-success" id="btnPreferedLocations"><span class="glyphicon glyphicon-plus"></span></button>
             </div>
 
             <div class="form-group" id="secondInputDiv">
                 <input type="text" class="form-control" placeholder="Additional Skills" id="inputSkills"/>
-                <button class="btn btn-success"><span class="glyphicon glyphicon-plus" onclick="addPreferedLocations();"></span></button>
+                <button class="btn btn-success" id="btnInputSkills"><span class="glyphicon glyphicon-plus"></span></button>
             </div>
-
-        
 
             <div class="form-group" id= "thirdInputDiv">
                 <select class="form-control">
-                        <option id="defaultSelection">Select One</option>
-                        <option id="bothJobs">Both</option>
+                        <!-- <option id="defaultSelection">Select One</option>
+                        <option id="bothJobs">Both</option> -->
                         <option id="governmentJobs">Government Jobs</option>
-                        <option id="privateSectorJobs" >Private Sector Jobs</option>
+                        <option id="privateSectorJobs" selected>Private Sector Jobs</option>
                     </select>
                 <button class="btn btn-success" id="submitUserInput">Submit</button>
             </div>
-
 
         </form>
         
@@ -95,85 +92,6 @@
             </thead>
             <tbody id="tableBody"></tbody>
         </table>
-           
-    <!-- </div> -->
-
-
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-
-<!--	<div class="container">
-	    <div class="jumbotron jumbotron-fluid">
-            <div class="container">
-                <h1 class="display-4">LinkedIndeed</h1>
-                <div class="form-group col-lg-6">
-                <label for="formGroupExampleInput">Example label</label>
-                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="">
-                </div>
-                <div class="form-group col-lg-6">
-                <label for="formGroupExampleInput">Example label</label>
-                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="">
-                </div>
-                <div class="form-group col-lg-6">
-                <label for="formGroupExampleInput">Example label</label>
-                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="">
-                </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    <table class="table">
-        <caption></caption>
-    <thead>
-        <tr>
-            <th scope="col">Job Title</th>
-            <th scope="col">Location</th>
-            <th scope="col">Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>"test1"</td>
-            <td>"test2"</td>
-            <td>"test3"</td>
-        </tr>
-    </tbody>
-    </table>
-</div> -->
-<!-- </script> -->
-
 
 <script type="text/javascript" src="https://platform.linkedin.com/in.js">
     api_key: 77uwyu64kulxbc
@@ -185,7 +103,6 @@
 </script>
 </body>
 </html>
-
 
 
 
