@@ -17,14 +17,21 @@
 .navbar{
     margin-top: 10px;
     height: 60px;
-    background-color: lightsteelblue;
-    text-align: center;
+    background-color: #23527C;
+    text-align: right;
 }
 
 /* navbar buttons */
 .navButtons{
     margin-right: 10px;
     margin-top: 10px;
+    border: 1px solid white;
+}
+
+home-button{
+    margin-right: 10px;
+    margin-top: 10px;
+    border: 1px solid white;
 }
 
 /* elements inside the navbar */
@@ -89,13 +96,20 @@
     margin: 25px;
     max-width: 96%;
     text-align: center;
-    border: 2px solid black !important;
+    border: 2px solid black;
 
 }
+
 
 /* Put border in every td */
 #table td{
     border: 1px solid black;
+}
+
+.thead td{
+    background: black;
+    color: white;
+    border : 1px solid white !important;
 }
 p{
     height: 10px;
