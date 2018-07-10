@@ -45,12 +45,14 @@ function start() {
     function onLogout() {
         console.log('Logout successfully');
         location.reload();
+
     }
 
     $("#logout").click(function() {
         console.log("onclick");
         logout();
     });
+
 }
 
 //Function to pull Git hub jobs per user profile
@@ -344,3 +346,4 @@ function notification() {
     });
 
 }
+
