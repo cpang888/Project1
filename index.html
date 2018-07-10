@@ -31,12 +31,12 @@
     <nav class="navbar">
             
         <div id="nav-elements">
-                <button class="btn btn-primary navButtons" id="home-button"><span class="glyphicon glyphicon-home"></span></button>
+             <button class="btn btn-primary navButtons" id="home-button" onclick="goHome();"><span class="glyphicon glyphicon-home"></span></button>
 
-            <button class="btn btn-primary navButtons" id="login-button"><script type="in/Login" ></script></button>        
+            <button class="btn btn-primary navButtons" id="login-button" ><script type="in/Login" ></script></button>        
             <!-- <button class="btn btn-primary navButtons">Logged in as: <span id="loggedin-user" </button> -->
-            <button class="btn btn-primary navButtons" id="logout">Logout</button>
-            <button class="btn btn-primary navButtons" id="briefcase" onclick="notification();"><span class="glyphicon glyphicon-briefcase"></span><b><span id="notification"></span></b></button>
+            <button class="btn btn-primary navButtons" id="logout" style="display: none;">Logout</button>
+            <button class="btn btn-primary navButtons" id="briefcase" onclick="notification();"style="display: none;"><span class="glyphicon glyphicon-briefcase"></span><b><span id="notification">&nbsp;0</span></b></button>
             
         </div>
     </nav>
@@ -97,7 +97,7 @@
                     <td style="width: 24.66%">Title</td>
                     <td style="width: 30.66%">Description</td>
                     <td style="width: 10.66%">Type</td>
-                    <td style="width: 10.66%">link</td>
+                    <td style="width: 10.66%">Link</td>
                 </tr>
             </thead>
             <tbody id="tableBody"></tbody>
