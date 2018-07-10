@@ -13,9 +13,7 @@
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-    <script src="https://www.gstatic.com/firebasejs/5.1.0/firebase.js"></script>
-    
-    <script src="assets/javascript/app.js" ></script>
+    <script src="https://www.gstatic.com/firebasejs/5.1.0/firebase.js"></script>   
     <link rel="stylesheet" href="assets/css/style.css">
 
 </head>
@@ -27,11 +25,14 @@
 
 <div id="page-2">
     <nav class="navbar">
+            
         <div id="nav-elements">
-                
+                <button class="btn btn-primary navButtons" id="home-button"><span class="glyphicon glyphicon-home"></span></button>
+
             <button class="btn btn-primary navButtons" id="login-button"><script type="in/Login" ></script></button>        
-            <button class="btn btn-primary navButtons">Logged in as: <span id="loggedin-user" </button>
+            <!-- <button class="btn btn-primary navButtons">Logged in as: <span id="loggedin-user" </button> -->
             <button class="btn btn-primary navButtons" id="logout">Logout</button>
+            <button class="btn btn-primary navButtons" id="briefcase" onclick="notification();"><span class="glyphicon glyphicon-briefcase"></span><b><span id="notification"></span></b></button>
             
         </div>
     </nav>
@@ -41,8 +42,8 @@
             <p><b>Name: </b><span id="name"</p>
             <p><b>Email-Address:</b><span id="email"></span></p>
             <p><b>Industry:</b><span id="industry"></span></p>
-            <p><b>Title:</b><span id="title"></span></p>
             <p><b>Location:</b><span id="location"></span></p>
+            <p><b>Job Search Keywords:</b><span id="search-keywords"></span></p>
             <p><b>Summary: </b><span id="summary"></span></p>
         </div>
     </div>
@@ -56,24 +57,24 @@
         <form class="form-inline">
             <div class="form-group has-feedback">
                 <input type="text" class="form-control" placeholder="location" id="preferedLocations"  />
-                <button class="btn btn-success"><span class="glyphicon glyphicon-plus" onclick="addPreferedLocations();"></span></button>
+                <button type = "button"class="btn btn-success" id="btnPreferedLocations" ><span class="glyphicon glyphicon-plus" ></span></button>
             </div>
 
             <div class="form-group" id="secondInputDiv">
-                <input type="text" class="form-control" placeholder="Additional Skills" id="inputSkills"/>
-                <button class="btn btn-success"><span class="glyphicon glyphicon-plus" onclick="addPreferedLocations();"></span></button>
+                <input type="text" class="form-control" placeholder="Key word" id="inputSkills"/>
+                <button type="button" class="btn btn-success" id="btnAdditionalSkills"><span class="glyphicon glyphicon-plus"></span></button>
             </div>
 
         
 
             <div class="form-group" id= "thirdInputDiv">
-                <select class="form-control">
-                        <option id="defaultSelection">Select One</option>
-                        <option id="bothJobs">Both</option>
+                <select class="form-control" id="selectJobType">
+                        <option id="defaultSelection" disabled selected="true">Select One</option>
+                        <option id="bothJobs" disabled>Both</option>
                         <option id="governmentJobs">Government Jobs</option>
-                        <option id="privateSectorJobs" >Private Sector Jobs</option>
+                        <option id="privateSectorJobs" >Github Jobs</option>
                     </select>
-                <button class="btn btn-success" id="submitUserInput">Submit</button>
+                <button type="button" class="btn btn-success" id="submitUserInput">Submit</button>
             </div>
 
 
@@ -83,9 +84,10 @@
 
     <!-- <div class="col-lg-12 panel panel-body" id="matchedJobDisplayanel"> -->
         <table class="table table-bordered" id="table">
-            <thead>
-                <tr>
-                    <td style="width: 12.66%" >Date Posted</td>
+            <thead >
+                <tr class="thead-dark thead">
+                    <td style="width: 5.66%" >Actions</td>
+                    <td style="width: 15.66%" >Date Posted</td>
                     <td style="width: 15.66%" >Location</td>
                     <td style="width: 24.66%">Title</td>
                     <td style="width: 30.66%">Description</td>
@@ -98,83 +100,7 @@
            
     <!-- </div> -->
 
-
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-
-<!--	<div class="container">
-	    <div class="jumbotron jumbotron-fluid">
-            <div class="container">
-                <h1 class="display-4">LinkedIndeed</h1>
-                <div class="form-group col-lg-6">
-                <label for="formGroupExampleInput">Example label</label>
-                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="">
-                </div>
-                <div class="form-group col-lg-6">
-                <label for="formGroupExampleInput">Example label</label>
-                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="">
-                </div>
-                <div class="form-group col-lg-6">
-                <label for="formGroupExampleInput">Example label</label>
-                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="">
-                </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    <table class="table">
-        <caption></caption>
-    <thead>
-        <tr>
-            <th scope="col">Job Title</th>
-            <th scope="col">Location</th>
-            <th scope="col">Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>"test1"</td>
-            <td>"test2"</td>
-            <td>"test3"</td>
-        </tr>
-    </tbody>
-    </table>
-</div> -->
-<!-- </script> -->
-
-
+    <script src="assets/javascript/app.js" ></script>
 <script type="text/javascript" src="https://platform.linkedin.com/in.js">
     api_key: 77uwyu64kulxbc
     authorize: true
