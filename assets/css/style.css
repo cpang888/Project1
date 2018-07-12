@@ -8,6 +8,7 @@
 #nav-bar{
     margin-top: 0px;
     background-color: #23527C;
+
 }
 
 /* navigation bar toggle button */
@@ -116,7 +117,7 @@ li{
 
 }
 
-
+td > div { overflow-y:auto;} 
 /* Put border in every td */
 /* #table td{
     border: 1px solid black;

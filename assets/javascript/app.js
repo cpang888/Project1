@@ -9,6 +9,9 @@ var url_govt;
 var emailAddress;
 var uniqueKey;
 var isSaved;
+var userLoggedIn;
+
+displayForNotLoggedIn();
 
 function start() {
     database = firebase.database();
@@ -19,8 +22,8 @@ function start() {
     }
 
     function onLogout() {
-        console.log('Logout successfully');
         location.reload();
+        displayForNotLoggedIn();
     }
 
     $("#logout").click(function(){
@@ -40,21 +43,18 @@ function pullGitHubJobs() {
         method: 'GET',
         dataType: 'jsonp'
     }).then(function(response) {
-        // console.log(response);
-
+        console.log(response)
         for (var i = 0; i < response.length; i++) {
             datePosted = response[i].created_at;
             var location = response[i].location;
             var title = response[i].title;
             var description = response[i].description;
-            // console.log(description);
             var type = response[i].type;
             var link = response[i].how_to_apply;
             // link = (link.split("URL:").pop());
             jobId = response[i].id;
 
             counter = i;
-            //   console.log(response);
             if(isSaved == "true"){
                 displaySavedListingInTable(datePosted, location, title, type, description, link);
             }else{
@@ -71,34 +71,31 @@ function pullGovernmentJobs() {
         method: 'GET',
         dataType: 'jsonp'
     }).then(function(response) {
-        // console.log(response);
 
         for (var i = 0; i < response.length; i++) {
             datePosted = response[i].start_date;
             var location = response[i].locations;
             var title = response[i].position_title;
             var description = response[i].organization_name;
-            // console.log(description);
             var type = "FT";
             var link = response[i].url;
-            // link = (link.split("URL:").pop());
             jobId = response[i].id;
             counter = i;
-            //   console.log(response);
 
-        
+           
                 displayInTable(datePosted, location, title, type, description, link);
-             
+
         }
     });
 }
 
 
-//Displays posting on table
+//Displays posting on table to logged users
 function displayInTable(datePosted, location, title, type, description, link) {
-    var tablebody = $('<tr><td>' +
-        "<button class='btn btn-default btn-xs'><span class='glyphicon glyphicon-folder-open' id=" + 
-        jobId + "></span></button>" + '</td><td>' +
+    
+    if(userLoggedIn == true){
+        var tablebody = $('<tr><td>' +
+        "<button class='btn btn-default btn-xs'><span class='glyphicon glyphicon-folder-open' id=" + jobId  + " disabled></span></button>" + '</td><td>' +
         datePosted + '</td><td>' +
         location + "</td><td class='CellWithComment'>" +
         title +
@@ -106,11 +103,22 @@ function displayInTable(datePosted, location, title, type, description, link) {
         'description </td><td>' +
         type + '</td><td>' +
         link + '</td><tr>');
-    $("#tableBody").append(tablebody);
+         $("#tableBody").append(tablebody);
+    }else{
+        var tablebody = $('<tr><td>'+
+        datePosted + '</td><td>' +
+        location + "</td><td class='CellWithComment'>" +
+        title +
+        "<span class='CellComment'>" + description + '</span></td><td>' +
+        'description </td><td>' +
+        type + '</td><td>' +
+        link + '</td><tr>');
+    $("#tableBody-0").append(tablebody);
+    }
 }
 
 
-//Displays saved posting on table
+//Displays saved posting on table retrived from breifcase
 function displaySavedListingInTable(datePosted, location, title, type, description, link) {
     var tablebody = $('<tr><td>' +
         "<button class='btn btn-default btn-xs'><span class='glyphicon glyphicon-trash' id=" + jobId + "></span></button>" + '</td><td>' +
@@ -123,6 +131,7 @@ function displaySavedListingInTable(datePosted, location, title, type, descripti
         link + '</td><tr>');
 
     $("#tableBody").append(tablebody);
+
 }
 
 
@@ -155,24 +164,19 @@ function addUserInput() {
 
             if (preferedJobType == "Government Jobs") {
                 $("#tableBody").empty();
-                // alert("run govt pull data function");
-                console.log("gov skils:" + skill);
-                console.log("gov loc:" + preferedLocation);
-                console.log(url_govt);
+                
+               
                 createUrl();
                 pullGovernmentJobs();
             } else if (preferedJobType == "Github Jobs") {
                 $("#tableBody").empty();
-                console.log("gh skils:" + skill);
-                console.log("gh loc:" + preferedLocation);
+               
     
                 createUrl();
-                console.log(url_gitHub);
                 pullGitHubJobs();
             }
 
         } else {
-            console.log("Prefered Location not entered"); // fix this 
         }
     });
 }
@@ -188,14 +192,12 @@ function createUrl() {
         url_gitHub = "https://jobs.github.com/positions.json?&page=1";
         url_govt = "https://jobs.search.gov/jobs/search.json?query=&size=100";
     }
-    console.log("final url is : " + url_gitHub);
-    console.log("final url is : " + url_govt);
-
+   
 }
 
 
 
-//Saving the listing users are interested
+//Saving the listing users are interested in firebase
 function saveThisListing() {
     $('#tableBody').on('click', '.glyphicon-folder-open', function(e) {
         var savedJobId = e.target.id;
@@ -204,12 +206,13 @@ function saveThisListing() {
         uniqueKey = emailAddress.split('.').join('@');
        
         database.ref("Accounts/" + uniqueKey + "/savedJobs/" + savedJobId).set({
-            jobId: savedJobId
+            jobId: savedJobId,
         });  
-        retrivingSavedItems();
     });
+
 }
 
+//Deletes the listings
 function removeThisListing(){
     $('#tableBody').on('click', '.glyphicon-trash', function(e) {
         var savedJobId = e.target.id;
@@ -217,21 +220,19 @@ function removeThisListing(){
         //This will change format the string the way fire base likes. firebase does not take ., #, etc.
         uniqueKey = emailAddress.split('.').join('@');
        
-        database.ref("Accounts/" + uniqueKey + "/savedJobs/" + savedJobId).remove().then( function (){
-            retrivingSavedItems();
-        });
+        database.ref("Accounts/" + uniqueKey + "/savedJobs/" + savedJobId).remove();
     });
 
 }
 
-
+//Updates the notification
 function retrivingSavedItems() {
     var ref = database.ref("Accounts/");
-    ref.child(uniqueKey).on("child_added", function(snap) {
-        var data = snap.val();
-        var saved = Object.keys(data).length;
-        $("#notification").html("&nbsp;" + saved);
-    });
+        ref.child(uniqueKey).on("child_added", function(snap) {
+            var data = snap.val();
+            var saved = Object.keys(data).length;
+            $("#notification").html("&nbsp;" + saved);
+        }); 
 }
 
 //Display user profile on the page
@@ -250,17 +251,15 @@ function dispayUserInfo(name, imageUrl, emailAddress, industry, summary) {
 
 // Use the API call wrapper to request the member's basic profile data
 function getProfileData() {
-    console.log("now only logged .....")
     $("#homeList").css("display", "inline");
     $("#logOutList").css("display", "inline");
     $("#briefcaseList").css("display", "inline");
     $("#loginList").css("display", "none");
+    $("#page-1").css("display", "none");
     $("#page-2").css("display", "inline");
     pullGitHubJobs();
     pullGovernmentJobs();
-
-
-    
+    userLoggedIn = true;
 
     IN.API.Profile("me").fields("first-name", "last-name", "email-address", "picture-url",
         "summary", "specialties", "industry", "positions").result(function(data) {
@@ -281,25 +280,21 @@ function getProfileData() {
             var saved = Object.keys(data).length;
             $("#notification").html("&nbsp;" + saved);
         });
-        pullGovernmentJobs();
         pullGitHubJobs();
+        pullGovernmentJobs();
     }).error(function(data) {
-        console.log(data);
     });
 }
 
 function notification() {
     isSaved = "true";
-    // console.log(userdata);
     uniqueKey = emailAddress.split('.').join('@');
-    // console.log(uniqueKey);
 
     // Get a database reference
     database.ref("Accounts/" + uniqueKey + "/savedJobs/").on("value", function(snapshot) {
         snapshot.forEach(function(childNodes) {
 
             var savedJobId = childNodes.val().jobId;
-            // var length = savedJobId.length;
             console.log(savedJobId);
 
             if (savedJobId.slice(0, 7) == "usajobs") {
@@ -324,7 +319,6 @@ function notification() {
                             var location = response[i].locations;
                             var title = response[i].position_title;
                             var description = response[i].organization_name;
-                            // console.log(description);
                             var type = "FT";
                             var link = response[i].url;
                             console.log("location : " + location + " title : " + title + "description : " + description + "type : " + type + "link : " + link);
@@ -350,12 +344,17 @@ createUrl();
 $(document).ready(function() {
     // Event listiners listining to user input like skills, location and job type
     addUserInput();
-    // addSkills()
-    // preferedJobType();
+    
     // when document is ready, call the start method
     start();
-    //Save the listing when users click save
     saveThisListing();
     removeThisListing();
-
 });
+
+function displayForNotLoggedIn(){
+    console.log("general info here");
+    url_gitHub = "https://jobs.github.com/positions.json?&page=1";
+    url_govt = "https://jobs.search.gov/jobs/search.json?query=&size=100";
+    pullGitHubJobs();
+    pullGovernmentJobs();
+}
